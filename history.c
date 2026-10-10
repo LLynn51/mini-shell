@@ -20,12 +20,12 @@ void history_add_str(Shell *sh, const char *raw) {
     }
 
     char *cmd = tmp;
-    while (*cmd == ' ' || *cmd == '\t') cmd++;
-    if (*cmd == '\0') return;
+    while(*cmd==' '||*cmd=='\t')cmd++;
+    if(*cmd=='\0') return;
 
-    if (sh->hist_len > 0) {
-        const char *last = history_get(sh, sh->hist_len);
-        if (last && strcmp(last, cmd) == 0) return;
+    if(sh->hist_len>0) {
+        const char *last= history_get(sh, sh->hist_len);
+        if(last && strcmp(last, cmd) == 0) return;
     }
 
     int slot;

@@ -14,8 +14,8 @@ void history_add_str(Shell *sh, const char *raw) {
     char tmp[MAX_LINE];
     snprintf(tmp, sizeof tmp, "%s", raw);
 
-    size_t len = strlen(tmp);
-    while (len > 0 && (tmp[len - 1] == '\n' || tmp[len - 1] == '\r')) {
+    size_t len=strlen(tmp);
+    while (len> 0&&(tmp[len-1]=='\n'||tmp[len-1]=='\r')) {
         tmp[--len] = '\0';
     }
 

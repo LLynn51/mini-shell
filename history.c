@@ -42,8 +42,8 @@ void history_add_str(Shell *sh, const char *raw) {
 }
 
 const char *history_get(Shell *sh, int n) {
-    if (n < 1 || n > sh->hist_len) return NULL;
-    int slot = (sh->hist_next + n - 1) % HIST_MAX;
+    if(n<1||n>sh->hist_len)return NULL;
+    int slot=(sh->hist_next + n - 1) % HIST_MAX;
     return sh->history[slot];
 }
 

@@ -14,18 +14,18 @@ void history_add_str(Shell *sh, const char *raw) {
     char tmp[MAX_LINE];
     snprintf(tmp, sizeof tmp, "%s", raw);
 
-    size_t len = strlen(tmp);
-    while (len > 0 && (tmp[len - 1] == '\n' || tmp[len - 1] == '\r')) {
+    size_t len=strlen(tmp);
+    while (len> 0&&(tmp[len-1]=='\n'||tmp[len-1]=='\r')) {
         tmp[--len] = '\0';
     }
 
     char *cmd = tmp;
-    while (*cmd == ' ' || *cmd == '\t') cmd++;
-    if (*cmd == '\0') return;
+    while(*cmd==' '||*cmd=='\t')cmd++;
+    if(*cmd=='\0') return;
 
-    if (sh->hist_len > 0) {
-        const char *last = history_get(sh, sh->hist_len);
-        if (last && strcmp(last, cmd) == 0) return;
+    if(sh->hist_len>0) {
+        const char *last= history_get(sh, sh->hist_len);
+        if(last && strcmp(last, cmd) == 0) return;
     }
 
     int slot;
@@ -42,13 +42,13 @@ void history_add_str(Shell *sh, const char *raw) {
 }
 
 const char *history_get(Shell *sh, int n) {
-    if (n < 1 || n > sh->hist_len) return NULL;
-    int slot = (sh->hist_next + n - 1) % HIST_MAX;
+    if(n<1||n>sh->hist_len)return NULL;
+    int slot=(sh->hist_next + n - 1) % HIST_MAX;
     return sh->history[slot];
 }
 
 void history_print(Shell *sh) {
-    for (int i = 1; i <= sh->hist_len; i++) {
+    for (int i=1;i<=sh->hist_len;i++) {
         const char *cmd = history_get(sh, i);
         if (cmd) printf("%d %s\n", i, cmd);
     }

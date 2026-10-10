@@ -35,7 +35,7 @@ int run_external(Shell *sh){
         // 处理失败
         int e=errno;
         fprintf(stderr,"mini-shell: %s : %s\n",sh->argv[0],strerror(e));
-
+        _exit(e == EACCES ? 126 : 127);
     }
 
     // 父进程：等待并回收子进程

@@ -48,7 +48,7 @@ const char *history_get(Shell *sh, int n) {
 }
 
 void history_print(Shell *sh) {
-    for (int i = 1; i <= sh->hist_len; i++) {
+    for (int i=1;i<=sh->hist_len;i++) {
         const char *cmd = history_get(sh, i);
         if (cmd) printf("%d %s\n", i, cmd);
     }
